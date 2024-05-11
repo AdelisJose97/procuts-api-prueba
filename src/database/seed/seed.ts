@@ -1,5 +1,4 @@
-/* import * as csv from '../lib/index.js' */
-
+import 'dotenv/config'
 import * as fs from 'node:fs'
 import { parse } from 'csv-parse'
 import { DataSource } from 'typeorm'
@@ -7,10 +6,10 @@ import { Product } from '../entities/product.entity'
 
 const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'aws-0-us-west-1.pooler.supabase.com',
+  host: process.env.DATABASE_HOST,
   port: 5432,
-  username: 'postgres.wjykdqmejcztsklnneco',
-  password: 'mypassword2024**/',
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
   database: 'postgres',
   synchronize: true,
   logging: true,
